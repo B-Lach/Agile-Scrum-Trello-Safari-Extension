@@ -264,12 +264,13 @@ AST = (function ( A ) {
 					_finishHeader();
 				}
 
-				// display List Story Points
-				currentListElement.parent().prepend('<small class="scrum-list-total' + cssStoryPoints + '"><span class="scrum-light">' + currentListDone.toFixed( storyPointDecimals ) + '/</span>' + currentListTotal.toFixed( storyPointDecimals ) + '</small>');
 
-				// display List progress bar
+				// Only visiualize List Story Points if there are Points to visiualize
 				if ( currentListTotal > 0 )
 				{
+					// display List Story Points
+					currentListElement.parent().prepend('<small class="scrum-list-total' + cssStoryPoints + '"><span class="scrum-light">' + currentListDone.toFixed( storyPointDecimals ) + '/</span>' + currentListTotal.toFixed( storyPointDecimals ) + '</small>');
+					// display List progress bar
 					bodyWidth = currentListDone / currentListTotal * 100;
 					currentListElement.parent('.list').prepend('<div class="scrum-list-progress"  style="background-color:' + bodyColor + ';width:' + ( bodyWidth <= 100 ? bodyWidth : 100 ) + '%"></div>');
 				}

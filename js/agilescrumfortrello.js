@@ -18,8 +18,13 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 */
+var AST = AST || {};
 
-AST = function ( A ) {
+(function( d ){ 'use strict';
+
+$( d ).ready(function(){
+
+AST = (function ( A ) {
 
 	var appName 			= 'Agile SCRUM for Trello boards',
 		appVersion 			= '1.0',
@@ -109,19 +114,12 @@ AST = function ( A ) {
 		 * See: https://github.com/luckyshot/agilescrumfortrello/issues/5
 		 */
 		var _checkForChanges =  function() {
-			try {
-				var boardContent = document.getElementById('board').innerHTML;
-				if (board != null) {
-					var currentChecksum = boardContent.length;
+			var currentChecksum = $('#board').html().length;
 
-					if ( runTimerChecksum !== currentChecksum )
-					{
-						runTimerChecksum = currentChecksum;
-						_run();
-					}
-				}
-			} catch (e) {
-				// safari has some trouble - users shouldn't care
+			if ( runTimerChecksum !== currentChecksum )
+			{
+				runTimerChecksum = currentChecksum;
+				_run();
 			}
 		};
 
@@ -367,8 +365,19 @@ AST = function ( A ) {
 			return 'hsla('+(r % 256)+',50%,40%,1)';
 		};
 
-	return A;
-}
 
-var obj = AST({});
-obj.init();
+
+
+
+
+	return A;
+
+})( AST || {} );
+
+
+AST.init();
+
+
+}); // jQuery document ready
+
+}( document ));

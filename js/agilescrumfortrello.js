@@ -370,9 +370,5 @@ AST = function ( A ) {
 	return A;
 }
 
-// Set Some in Extension Builder and set https://trello.com/b/* as Domain is not working
-// We have to set the Domains to All. But the script is only for Trello.com/b/* needed.
-if (window.location.hostname === 'trello.com') {
-	var obj = AST({});
-	obj.init();
-}
+var obj = AST({});
+obj.init();
